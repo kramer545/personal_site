@@ -14,34 +14,24 @@
   </head>
 
   <style>
-    .intoSection {
-      width: 50%;
-    }
-    .intoSection > img {
+    img {
       width: 100%;
     }
 
-    .project {
+    .project-row {
       display: flex;
-      margin: 0 2rem;
-    }
-
-    .project-text {
-      width: 33%;
-    }
-
-    .project-image {
-      width: 66%;
+      flex-wrap: wrap;
+      margin: 0 2rem 5rem 2rem;
     }
 
     .nameHeader {
-      font-size: 100px;
+      font-size: 5rem;
       font-weight: 600;
       letter-spacing: -2px;
       font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif
     }
 
-    @keyframes wifi-signal-anim {
+    @keyframes signal-anim {
       0% {border-color: rgba(0,0,0,0);}
       33% {border-color: blue;}
       66% {border-color: rgba(0,0,0,0);}
@@ -57,7 +47,7 @@
       border: 10px solid blue;
       border-bottom: 0;
       border-left: 0;
-      animation-name: wifi-signal-anim;
+      animation-name: signal-anim;
       animation-duration: 3s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
@@ -72,7 +62,7 @@
       border: 10px solid blue;
       border-bottom: 0;
       border-left: 0;
-      animation-name: wifi-signal-anim;
+      animation-name: signal-anim;
       animation-duration: 3s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
@@ -87,7 +77,7 @@
       border: 10px solid blue;
       border-bottom: 0;
       border-left: 0;
-      animation-name: wifi-signal-anim;
+      animation-name: signal-anim;
       animation-duration: 3s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
@@ -123,26 +113,43 @@
     #right-signal > div:nth-child(3) {
       animation-delay: -4.6s;
     }
+
+    .scan-overlay {
+      z-index: 1;
+      opacity: 0;
+      -webkit-transition: opacity 0.5s ease-out;
+      -moz-transition: opacity 0.5s ease-out;
+      -o-transition: opacity 0.5s ease-out;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .scan-overlay:hover {
+      opacity: 1;
+    }
   </style>
 
   <body>
-    <div style="display: flex">
-      <div class="intoSection">
+    <div class="row" style="display: flex; flex-wrap:wrap">
+      <div class="intoSection col s12 m6">
         Hello World! My name is
         <div class="nameHeader">
           Ryan Kramer!
         </div>
       </div>
-      <div class="intoSection">
+      <div class="intoSection col s12 m6">
         <img src="profilePic.jpg" />
       </div>
     </div>
-    <div class="project">
-      <div class="project-text">
-          Developed scalable water dispensary system that retrieved, displayed and interacted with sensor data from around the world on a easy to use website.
-      </div>
-      <div class="project-image" style="background-color: skyblue">
-        <div class="signals">
+
+    <div>
+      <h3 class="center-align">Projects</h3>
+
+      <div class="project-row row">
+        <div class="project-text col s12 m4">
+            Developed scalable water dispensary system that retrieved, displayed and interacted with sensor data from around the world on a easy to use website.
+        </div>
+        <div class="project-image col s12 m8" style="background-color: skyblue">
+          <div class="signals">
             <div style="display: flex">
               <div>
                 <i class="large material-icons">
@@ -168,7 +175,33 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div id="ar_project" class="project-row row">
+        <div class="project-image col s12 m8">
+          <img id="baseScanImg" src="musuemEdited.jpg" />
+          <img id="overlayScanImg" class="scan-overlay" src="musuemGrid.jpg" />
+        </div>
+        <div class="project-text col s12 m4">
+            Developed scalable water dispensary system that retrieved, displayed and interacted with sensor data from around the world on a easy to use website.
+        </div>
       </div>
     </div>
+
+    <script>
+      $(document).ready(function() {
+        overlayImg();
+      });
+
+      $( window ).resize(function() { 
+        overlayImg();
+      });
+
+      function overlayImg() {
+        var height = $("#baseScanImg").height();
+        $("#overlayScanImg").css('transform', 'translateY(-' + (height + 4) + 'px)');
+      }
+    </script>
   </body>
 </html>
