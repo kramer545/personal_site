@@ -124,7 +124,18 @@
     }
 
     .scan-overlay:hover {
-      opacity: 1;
+      opacity: 0.9;
+    }
+
+    .scan-img-container {
+      position: absolute;
+      max-width: calc(66% - 4rem);
+    }
+
+    @media only screen and (max-width: 600px) {
+      .scan-img-container {
+        max-width: calc(100% - 4rem);
+      }
     }
   </style>
 
@@ -179,29 +190,18 @@
       </div>
 
       <div id="ar_project" class="project-row row">
-        <div class="project-image col s12 m8">
-          <img id="baseScanImg" src="musuemEdited.jpg" />
-          <img id="overlayScanImg" class="scan-overlay" src="musuemGrid.jpg" />
-        </div>
         <div class="project-text col s12 m4">
-            Developed scalable water dispensary system that retrieved, displayed and interacted with sensor data from around the world on a easy to use website.
+          Developed scalable water dispensary system that retrieved, displayed and interacted with sensor data from around the world on a easy to use website.
+        </div>
+        <div class="project-image col s12 m8">
+          <div class="scan-img-container">
+              <img id="baseScanImg" src="musuemEdited.jpg" />
+          </div>
+          <div class="scan-img-container">
+            <img id="overlayScanImg" class="scan-overlay" src="musuemGrid.jpg" />
+          </div>
         </div>
       </div>
     </div>
-
-    <script>
-      $(document).ready(function() {
-        overlayImg();
-      });
-
-      $( window ).resize(function() { 
-        overlayImg();
-      });
-
-      function overlayImg() {
-        var height = $("#baseScanImg").height();
-        $("#overlayScanImg").css('transform', 'translateY(-' + (height + 4) + 'px)');
-      }
-    </script>
   </body>
 </html>
