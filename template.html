@@ -32,7 +32,11 @@
       font-size: 5rem;
       font-weight: 600;
       letter-spacing: -2px;
-      font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif
+      font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+      position: -webkit-sticky;
+      position: sticky;
+      height: 0;
+      top: 75px;
     }
 
     @keyframes signal-anim {
@@ -147,14 +151,14 @@
   </style>
 
   <body>
+    <div id='nameHeader' class="nameHeader">
+      Ryan Kramer!
+    </div>
     <div class="row" style="display: flex; flex-wrap:wrap">
-      <div class="intoSection col s12 m6">
+      <div class="introSection col s12 m6" style="margin-top:50px;">
         Hello World! My name is
-        <div class="nameHeader">
-          Ryan Kramer!
-        </div>
       </div>
-      <div class="intoSection col s12 m6">
+      <div class="introSection col s12 m6">
         <img src="profilePic.jpg" />
       </div>
     </div>
@@ -238,5 +242,23 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Code for setting size and position of topbar name as page scrolls
+      var nameScrollLimit = 200;
+      var nameScrollInitialTop = 75;
+      var nameScrollTopMultiplier = (nameScrollInitialTop / nameScrollLimit);
+      var nameScrollInitialFontSize = 5;
+      var nameScrollFontMultiplier = (nameScrollInitialFontSize / nameScrollLimit) / 2;
+      $(document).on('scroll', function() {
+        if ($(this).scrollTop() <= nameScrollLimit) {
+          $('#nameHeader').css('top', nameScrollInitialTop - ($(this).scrollTop() * nameScrollTopMultiplier));
+          $('#nameHeader').css('font-size', nameScrollInitialFontSize - ($(this).scrollTop() * nameScrollFontMultiplier) + 'rem');
+        } else {
+          $('#nameHeader').css('top', 0);
+          $('#nameHeader').css('font-size', '2.5rem');
+        }
+      });
+    </script>
   </body>
 </html>
