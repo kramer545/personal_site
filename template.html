@@ -37,6 +37,35 @@
       position: sticky;
       height: 0;
       top: 75px;
+      z-index: 2;
+    }
+
+    .navButtons {
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: flex-end;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0px;
+      padding-bottom: 0.5rem;
+      z-index: 1;
+      background-color: unset;
+      -webkit-transition: background-color 0.5s linear;
+      -ms-transition: background-color 0.5s linear;
+      transition: background-color 0.5s linear;
+    }
+
+    .navButtons > a {
+      margin: 0 auto;
+      font-size: 2rem;
+      padding-top: 0.25rem;
+    }
+
+    .animatedNavBar {
+      background-color: green;
+      -webkit-transition: background-color 0.5s linear;
+      -ms-transition: background-color 0.5s linear;
+      transition: background-color 0.5s linear;
     }
 
     @keyframes signal-anim {
@@ -162,6 +191,11 @@
         <img src="profilePic.jpg" />
       </div>
     </div>
+    <div id='navButtons' class='navButtons' style="display: flex; flex-wrap:wrap; justify-content: space-evenly">
+      <a>About Me</a>
+      <a>Projects</a>
+      <a>Contact Me</a>
+    </div>
 
     <div>
       <h3 class="center-align">Projects</h3>
@@ -244,19 +278,25 @@
     </div>
 
     <script>
-      // Code for setting size and position of topbar name as page scrolls
-      var nameScrollLimit = 200;
+      // Code for setting size and position of topbar name / buttons as page scrolls
+      var nameScrollLimit = 300;
       var nameScrollInitialTop = 75;
       var nameScrollTopMultiplier = (nameScrollInitialTop / nameScrollLimit);
       var nameScrollInitialFontSize = 5;
       var nameScrollFontMultiplier = (nameScrollInitialFontSize / nameScrollLimit) / 2;
+      var linkScrollFinalPadding = 50;
+      var linkScrollPaddingMultiplier = (linkScrollFinalPadding / nameScrollLimit)
       $(document).on('scroll', function() {
         if ($(this).scrollTop() <= nameScrollLimit) {
           $('#nameHeader').css('top', nameScrollInitialTop - ($(this).scrollTop() * nameScrollTopMultiplier));
           $('#nameHeader').css('font-size', nameScrollInitialFontSize - ($(this).scrollTop() * nameScrollFontMultiplier) + 'rem');
+          $('#navButtons').css('padding-left', ($(this).scrollTop() * linkScrollPaddingMultiplier) + '%');
+          $('#navButtons').removeClass("animatedNavBar");
         } else {
           $('#nameHeader').css('top', 0);
           $('#nameHeader').css('font-size', '2.5rem');
+          $('#navButtons').css('padding-left', '50%');
+          $('#navButtons').addClass("animatedNavBar");
         }
       });
     </script>
