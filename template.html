@@ -162,12 +162,12 @@
 
     .scan-img-container {
       position: absolute;
-      max-width: calc(66% - 4rem);
+      margin-right: 2rem;
     }
 
     @media only screen and (max-width: 600px) {
       .scan-img-container {
-        max-width: calc(100% - 4rem);
+        margin-top: 0.75rem;
       }
     }
 
@@ -176,6 +176,10 @@
       .project-text {
         order: -1;
       }
+    }
+
+    .scan-img-hidden {
+      visibility: hidden;
     }
   </style>
 
@@ -197,9 +201,30 @@
       <a>Contact Me</a>
     </div>
 
-    <div>
-      <h3 class="center-align">Projects</h3>
+    <div id="about_me">
+      <h3 class="center-align">About Me</h3>
+      <div class="project-row row">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Orci dapibus ultrices in iaculis. Vel facilisis volutpat est velit egestas dui id. Libero enim sed faucibus turpis in.
+        Lorem dolor sed viverra ipsum nunc aliquet bibendum enim facilisis. Neque laoreet suspendisse interdum consectetur libero.
+        Mattis vulputate enim nulla aliquet porttitor. In dictum non consectetur a erat. Nunc sed id semper risus. Turpis nunc eget lorem dolor
+        sed viverra ipsum nunc aliquet. Convallis convallis tellus id interdum velit laoreet id donec.
+      </div>
+      <div class="project-row row">
+        Enim nunc faucibus a pellentesque sit amet porttitor eget dolor. Facilisis gravida neque convallis a cras semper auctor.
+        Aenean sed adipiscing diam donec adipiscing tristique. Ullamcorper morbi tincidunt ornare massa. Vestibulum lectus mauris 
+        ultrices eros in cursus turpis massa tincidunt. Integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus. 
+        Diam maecenas ultricies mi eget. Id consectetur purus ut faucibus pulvinar elementum integer enim neque. Feugiat nisl pretium 
+        fusce id velit. Augue neque gravida in fermentum et. Libero volutpat sed cras ornare. Nec tincidunt praesent semper feugiat. 
+        Est lorem ipsum dolor sit amet consectetur adipiscing. Id velit ut tortor pretium viverra suspendisse potenti nullam ac. 
+        Feugiat pretium nibh ipsum consequat nisl vel pretium. Tempus iaculis urna id volutpat lacus laoreet. Tortor at risus 
+        viverra adipiscing at in tellus integer feugiat. Sed adipiscing diam donec adipiscing tristique risus nec feugiat in. 
+        Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing.
+      </div>
+    </div>
 
+    <div id="projects">
+      <h3 class="center-align">Projects</h3>
       <div class="project-row row">
         <div class="project-text valign-wrapper col s12 m5">
           <div>
@@ -266,12 +291,34 @@
             to specific areas from any location, and displaying contextual information when pointing the device at a area, such as extra details on a painting.
           </div>
         </div>
-        <div class="project-media col s12 m7">
+        <div class="project-media col s12 m7 valign-wrapper" style="max-height:100%">
           <div class="scan-img-container">
             <img id="baseScanImg" src="musuemEdited.jpg" />
           </div>
           <div class="scan-img-container">
             <img id="overlayScanImg" class="scan-overlay" src="musuemGrid.jpg" />
+          </div>
+          <div class="scan-img-hidden">
+            <img src="musuemGrid.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact_me">
+      <h3 class="center-align">Contact Me</h3>
+      <div class="project-row row">
+        <div class="center-align col s6">
+          <div>
+            Email:
+          </div>
+          <div>
+            <a href="mailto:kramer545@gmail.com" target="_blank">kramer545@gmail.com</a>
+          </div>
+        </div>
+        <div class="center-align col s6">
+          <div>
+            <a href="https://github.com/kramer545" target="_blank"><img style="width:100px" src="GitHub_Logo.png" /></a>
           </div>
         </div>
       </div>
