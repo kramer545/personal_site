@@ -71,6 +71,14 @@
       padding-top: 0.25rem;
     }
 
+    .navButtons > a:hover {
+      border-bottom: 2px solid orange;
+    }
+
+    .navButtons.animatedNavBar > a.active {
+      border-bottom: 4px solid orange;
+    }
+
     .animatedNavBar {
       background-color: green;
       -webkit-transition: background-color 0.5s linear;
@@ -197,21 +205,21 @@
     <div id='nameHeader' class="nameHeader">
       Ryan Kramer
     </div>
-    <div class="row" style="display: flex; flex-wrap:wrap">
+    <div class="row" style="display: flex; flex-wrap:wrap; margin-bottom: 0; padding-bottom: 20px;">
       <div class="introSection col s12 m6" style="margin-top:50px;">
         Hello World! My name is
       </div>
       <div class="introSection col s12 m6">
-        <img src="profilePic.jpg" />
+        <img style="display: block;" src="profilePic.jpg" />
       </div>
     </div>
     <div id='navButtons' class='navButtons'>
-      <a>About Me</a>
-      <a>Projects</a>
-      <a>Contact Me</a>
+      <a href='#about_me'>About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact_me">Contact Me</a>
     </div>
 
-    <div id="about_me">
+    <div id="about_me" class="scrollspy section">
       <h3 class="center-align">About Me</h3>
       <div class="project-row row">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -233,7 +241,7 @@
       </div>
     </div>
 
-    <div id="projects">
+    <div id="projects" class="scrollspy section">
       <h3 class="center-align">Projects</h3>
       <div id="Stagehand" class="project-row row">
         <div class="project-text valign-wrapper col s12 m5">
@@ -329,7 +337,7 @@
       </div>
     </div>
 
-    <div id="contact_me">
+    <div id="contact_me" class="scrollspy section">
       <h3 class="center-align">Contact Me</h3>
       <div class="project-row row">
         <div class="center-align col s6">
@@ -369,6 +377,10 @@
           $('#navButtons').css('padding-left', '50%');
           $('#navButtons').addClass("animatedNavBar");
         }
+      });
+
+      $(document).ready(function(){
+        $('.scrollspy').scrollSpy({scrollOffset: 20});
       });
     </script>
   </body>
